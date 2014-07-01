@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-06-2014 11:47:47 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class name="cl.movistar.hibernate.dto.EventoNegocio" schema="USERTRCK" table="EVENTO_NEGOCIO">
+    <id name="id" type="int">
+      <column name="ID"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="nombre" type="string">
+      <column length="100" name="NOMBRE" not-null="true"/>
+    </property>
+    <property name="descripcion" type="string">
+      <column length="100" name="DESCRIPCION" not-null="true"/>
+    </property>
+    <property name="accionesNegocio" type="string">
+      <column length="100" name="ACCIONES_NEGOCIO" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

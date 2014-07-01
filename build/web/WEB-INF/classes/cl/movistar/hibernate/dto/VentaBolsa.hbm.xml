@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-06-2014 11:47:47 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class name="cl.movistar.hibernate.dto.VentaBolsa" schema="USERTRCK" table="VENTA_BOLSA">
+    <id name="id" type="int">
+      <column name="ID"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="numeroCelular" type="int">
+      <column name="NUMERO_CELULAR" not-null="true"/>
+    </property>
+    <property name="numeroAbonado" type="int">
+      <column name="NUMERO_ABONADO" not-null="true"/>
+    </property>
+    <property name="codigoCliente" type="int">
+      <column name="CODIGO_CLIENTE" not-null="true"/>
+    </property>
+    <property name="cicloFacturacion" type="int">
+      <column name="CICLO_FACTURACION" not-null="true"/>
+    </property>
+    <property name="codigoOferta" type="string">
+      <column length="100" name="CODIGO_OFERTA" not-null="true"/>
+    </property>
+    <property name="nombreOferta" type="string">
+      <column length="100" name="NOMBRE_OFERTA" not-null="true"/>
+    </property>
+    <property name="fechaContratacion" type="timestamp">
+      <column length="26" name="FECHA_CONTRATACION" not-null="true"/>
+    </property>
+    <property name="fechaActivacion" type="timestamp">
+      <column length="26" name="FECHA_ACTIVACION"/>
+    </property>
+    <property name="fechaNotificacion" type="timestamp">
+      <column length="26" name="FECHA_NOTIFICACION"/>
+    </property>
+    <property name="canal" type="int">
+      <column name="CANAL" not-null="true"/>
+    </property>
+    <property name="subCanal" type="java.lang.Integer">
+      <column name="SUB_CANAL"/>
+    </property>
+    <property name="estado" type="int">
+      <column name="ESTADO" not-null="true"/>
+    </property>
+    <property name="agencia" type="string">
+      <column length="100" name="AGENCIA"/>
+    </property>
+    <property name="codigoVendedor" type="string">
+      <column length="100" name="CODIGO_VENDEDOR" not-null="true"/>
+    </property>
+    <property name="precio" type="int">
+      <column name="PRECIO" not-null="true"/>
+    </property>
+    <property name="descuento" type="int">
+      <column name="DESCUENTO" not-null="true"/>
+    </property>
+    <property name="puntosUtilizados" type="int">
+      <column name="PUNTOS_UTILIZADOS" not-null="true"/>
+    </property>
+    <property name="idTracking" type="int">
+      <column name="ID_TRACKING" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

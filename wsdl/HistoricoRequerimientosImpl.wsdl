@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.movistar.cl" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.movistar.cl" xmlns:intf="http://services.movistar.cl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services.movistar.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="consultaHistoricoCriterio">
+    <complexType>
+     <sequence>
+      <element name="criterio" type="impl:CriterioRequest"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="CriterioRequest">
+    <sequence>
+     <element name="agencia" nillable="true" type="xsd:string"/>
+     <element name="canal" nillable="true" type="xsd:string"/>
+     <element name="codigoVendedor" type="xsd:int"/>
+     <element name="estado" nillable="true" type="xsd:string"/>
+     <element name="fechaDesde" nillable="true" type="xsd:dateTime"/>
+     <element name="fechaHasta" nillable="true" type="xsd:dateTime"/>
+     <element name="subCanal" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="consultaHistoricoCriterioResponse">
+    <complexType>
+     <sequence>
+      <element name="consultaHistoricoCriterioReturn" type="impl:HistoricoResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="HistoricoResponseData">
+    <sequence>
+     <element name="canalContratacion" nillable="true" type="xsd:string"/>
+     <element name="cicloFacturacion" type="xsd:int"/>
+     <element name="codigoCliente" type="xsd:int"/>
+     <element name="codigoOferta" type="xsd:string"/>
+     <element name="descuento" type="xsd:int"/>
+     <element name="estado" nillable="true" type="xsd:string"/>
+     <element name="fechaHoraActivacion" nillable="true" type="xsd:dateTime"/>
+     <element name="fechaHoraContratacion" nillable="true" type="xsd:dateTime"/>
+     <element name="fechaHoraNotificacion" nillable="true" type="xsd:dateTime"/>
+     <element name="idTransaccion" type="xsd:int"/>
+     <element name="nombreOferta" nillable="true" type="xsd:string"/>
+     <element name="numeroAbonado" type="xsd:int"/>
+     <element name="numeroCelular" type="xsd:int"/>
+     <element name="precioCompra" type="xsd:int"/>
+     <element name="puntosUtilizados" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfHistoricoResponseData">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:HistoricoResponseData"/>
+    </sequence>
+   </complexType>
+   <complexType name="HistoricoResponse">
+    <sequence>
+     <element name="codigoError" type="xsd:int"/>
+     <element name="descripcionError" nillable="true" type="xsd:string"/>
+     <element name="mensajeError" nillable="true" type="xsd:string"/>
+     <element name="resp" nillable="true" type="impl:ArrayOfHistoricoResponseData"/>
+    </sequence>
+   </complexType>
+   <element name="consultaHistoricoCliente">
+    <complexType>
+     <sequence>
+      <element name="cliente" type="impl:ClienteRequest"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ClienteRequest">
+    <sequence>
+     <element name="numeroAbonado" type="xsd:int"/>
+     <element name="numeroCelular" type="xsd:int"/>
+     <element name="rut" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="consultaHistoricoClienteResponse">
+    <complexType>
+     <sequence>
+      <element name="consultaHistoricoClienteReturn" type="impl:HistoricoResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="consultaHistoricoClienteResponse">
+
+      <wsdl:part element="impl:consultaHistoricoClienteResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultaHistoricoCriterioResponse">
+
+      <wsdl:part element="impl:consultaHistoricoCriterioResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultaHistoricoCriterioRequest">
+
+      <wsdl:part element="impl:consultaHistoricoCriterio" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultaHistoricoClienteRequest">
+
+      <wsdl:part element="impl:consultaHistoricoCliente" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="HistoricoRequerimientosImpl">
+
+      <wsdl:operation name="consultaHistoricoCriterio">
+
+         <wsdl:input message="impl:consultaHistoricoCriterioRequest" name="consultaHistoricoCriterioRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:consultaHistoricoCriterioResponse" name="consultaHistoricoCriterioResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="consultaHistoricoCliente">
+
+         <wsdl:input message="impl:consultaHistoricoClienteRequest" name="consultaHistoricoClienteRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:consultaHistoricoClienteResponse" name="consultaHistoricoClienteResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="HistoricoRequerimientosImplSoapBinding" type="impl:HistoricoRequerimientosImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="consultaHistoricoCriterio">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="consultaHistoricoCriterioRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="consultaHistoricoCriterioResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="consultaHistoricoCliente">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="consultaHistoricoClienteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="consultaHistoricoClienteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="HistoricoRequerimientosImplService">
+
+      <wsdl:port binding="impl:HistoricoRequerimientosImplSoapBinding" name="HistoricoRequerimientosImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/HistoricoRequerimientosWS/services/HistoricoRequerimientosImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
