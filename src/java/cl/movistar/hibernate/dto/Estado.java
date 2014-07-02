@@ -1,5 +1,5 @@
 package cl.movistar.hibernate.dto;
-// Generated 20-06-2014 11:47:45 AM by Hibernate Tools 3.6.0
+// Generated 02-07-2014 06:50:33 PM by Hibernate Tools 3.6.0
 
 
 

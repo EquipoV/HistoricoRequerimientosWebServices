@@ -1,68 +1,72 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20-06-2014 11:47:47 AM by Hibernate Tools 3.6.0 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-07-2014 06:50:34 PM by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
-  <class name="cl.movistar.hibernate.dto.MovimientosTracking" schema="USERTRCK" table="MOVIMIENTOS_TRACKING">
-    <id name="id" type="int">
-      <column name="ID"/>
-      <generator class="assigned"/>
-    </id>
-    <property name="numeroCelular" type="java.lang.Integer">
-      <column name="NUMERO_CELULAR"/>
-    </property>
-    <property name="numeroAbonado" type="java.lang.Integer">
-      <column name="NUMERO_ABONADO"/>
-    </property>
-    <property name="codigoCliente" type="java.lang.Integer">
-      <column name="CODIGO_CLIENTE"/>
-    </property>
-    <property name="cicloFacturacion" type="java.lang.Integer">
-      <column name="CICLO_FACTURACION"/>
-    </property>
-    <property name="codigoOferta" type="string">
-      <column length="100" name="CODIGO_OFERTA"/>
-    </property>
-    <property name="nombreOferta" type="string">
-      <column length="100" name="NOMBRE_OFERTA"/>
-    </property>
-    <property name="fechaContratacion" type="timestamp">
-      <column length="26" name="FECHA_CONTRATACION"/>
-    </property>
-    <property name="fechaActivacion" type="timestamp">
-      <column length="26" name="FECHA_ACTIVACION"/>
-    </property>
-    <property name="fechaNotificacion" type="timestamp">
-      <column length="26" name="FECHA_NOTIFICACION"/>
-    </property>
-    <property name="canal" type="java.lang.Integer">
-      <column name="CANAL"/>
-    </property>
-    <property name="subCanal" type="java.lang.Integer">
-      <column name="SUB_CANAL"/>
-    </property>
-    <property name="estado" type="java.lang.Integer">
-      <column name="ESTADO"/>
-    </property>
-    <property name="agencia" type="string">
-      <column length="100" name="AGENCIA"/>
-    </property>
-    <property name="codigoVendedor" type="string">
-      <column length="100" name="CODIGO_VENDEDOR"/>
-    </property>
-    <property name="precio" type="java.lang.Integer">
-      <column name="PRECIO"/>
-    </property>
-    <property name="descuento" type="java.lang.Integer">
-      <column name="DESCUENTO"/>
-    </property>
-    <property name="puntosUtilizados" type="java.lang.Integer">
-      <column name="PUNTOS_UTILIZADOS"/>
-    </property>
-    <property name="idTracking" type="java.lang.Integer">
-      <column name="ID_TRACKING"/>
-    </property>
-    <property name="idEventoTracking" type="java.lang.Integer">
-      <column name="ID_EVENTO_TRACKING"/>
-    </property>
-  </class>
+    <class name="cl.movistar.hibernate.dto.MovimientosTracking" table="MOVIMIENTOS_TRACKING" schema="USERTRCK">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="numeroCelular" type="java.lang.Integer">
+            <column name="NUMERO_CELULAR" />
+        </property>
+        <property name="numeroAbonado" type="java.lang.Integer">
+            <column name="NUMERO_ABONADO" />
+        </property>
+        <property name="codigoCliente" type="java.lang.Integer">
+            <column name="CODIGO_CLIENTE" />
+        </property>
+        <property name="cicloFacturacion" type="java.lang.Integer">
+            <column name="CICLO_FACTURACION" />
+        </property>
+        <property name="codigoOferta" type="string">
+            <column name="CODIGO_OFERTA" length="100" />
+        </property>
+        <property name="nombreOferta" type="string">
+            <column name="NOMBRE_OFERTA" length="100" />
+        </property>
+        <property name="fechaContratacion" type="timestamp">
+            <column name="FECHA_CONTRATACION" length="26" />
+        </property>
+        <property name="fechaActivacion" type="timestamp">
+            <column name="FECHA_ACTIVACION" length="26" />
+        </property>
+        <property name="fechaNotificacion" type="timestamp">
+            <column name="FECHA_NOTIFICACION" length="26" />
+        </property>
+        <property name="canal" type="java.lang.Integer">
+            <column name="CANAL" />
+        </property>
+        <property name="subCanal" type="java.lang.Integer">
+            <column name="SUB_CANAL" />
+        </property>
+        <property name="estado" type="java.lang.Integer">
+            <column name="ESTADO" />
+        </property>
+        <property name="agencia" type="string">
+            <column name="AGENCIA" length="100" />
+        </property>
+        <property name="codigoVendedor" type="string">
+            <column name="CODIGO_VENDEDOR" length="100" />
+        </property>
+        <property name="precio" type="java.lang.Integer">
+            <column name="PRECIO" />
+        </property>
+        <property name="descuento" type="java.lang.Integer">
+            <column name="DESCUENTO" />
+        </property>
+        <property name="puntosUtilizados" type="java.lang.Integer">
+            <column name="PUNTOS_UTILIZADOS" />
+        </property>
+        <property name="idTracking" type="java.lang.Integer">
+            <column name="ID_TRACKING" />
+        </property>
+        <property name="idEventoTracking" type="java.lang.Integer">
+            <column name="ID_EVENTO_TRACKING" />
+        </property>
+        <property name="usuario" type="string">
+            <column name="USUARIO" length="100" />
+        </property>
+    </class>
 </hibernate-mapping>

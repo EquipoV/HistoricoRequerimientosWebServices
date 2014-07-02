@@ -32,25 +32,29 @@ public class HistoricoRequerimientosWSDLTest {
     public void testConsultaHistoricoCriterio() throws DatatypeConfigurationException, ParseException {
         System.out.println("consultaHistoricoCriterio");
         CriterioRequest criterio = new CriterioRequest();
-        criterio.setCanal("IN");
-        //criterio.setCodigoVendedor(2342);
-        //criterio.setEstado("EN CONFIRMACION");
+        criterio.setCanal("CANAL IN");
+        criterio.setSubCanal("SUBCANAL IN");
+        criterio.setCodigoVendedor(0);
+        criterio.setEstado("");
+        criterio.setAgencia("");
 
         SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
-        String strDesde = "2014-01-01";
+        String strDesde = "2014-07-01";
 
         try {
             Date fechaDesde = formatoDelTexto.parse(strDesde);
             GregorianCalendar gregory1 = new GregorianCalendar();
             gregory1.setTime(fechaDesde);
             XMLGregorianCalendar xmlGregory1 = DatatypeFactory.newInstance().newXMLGregorianCalendar(gregory1);
-            //criterio.setFechaDesde(xmlGregory1);
+            criterio.setFechaDesde(xmlGregory1);
 
-            Date fechaHasta = new Date();
+            //Date fechaHasta = new Date();
+            String strHasta = "2014-07-02";
+            Date fechaHasta = formatoDelTexto.parse(strHasta);
             GregorianCalendar gregory2 = new GregorianCalendar();
             gregory2.setTime(fechaHasta);
             XMLGregorianCalendar xmlGregory2 = DatatypeFactory.newInstance().newXMLGregorianCalendar(gregory2);
-            //criterio.setFechaHasta(xmlGregory2);
+            criterio.setFechaHasta(xmlGregory2);
         } catch (ParseException ex) {
         }
 

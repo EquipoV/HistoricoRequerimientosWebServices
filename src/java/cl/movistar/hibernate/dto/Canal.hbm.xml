@@ -1,17 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20-06-2014 11:47:47 AM by Hibernate Tools 3.6.0 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-07-2014 06:50:34 PM by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
-  <class name="cl.movistar.hibernate.dto.Canal" schema="USERTRCK" table="CANAL">
-    <id name="id" type="int">
-      <column name="ID"/>
-      <generator class="assigned"/>
-    </id>
-    <property name="nombre" type="string">
-      <column length="100" name="NOMBRE" not-null="true"/>
-    </property>
-    <property name="descripcion" type="string">
-      <column length="100" name="DESCRIPCION" not-null="true"/>
-    </property>
-  </class>
+    <class name="cl.movistar.hibernate.dto.Canal" table="CANAL" schema="USERTRCK">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="100" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" length="100" not-null="true" />
+        </property>
+    </class>
 </hibernate-mapping>

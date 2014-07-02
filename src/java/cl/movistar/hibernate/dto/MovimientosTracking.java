@@ -1,5 +1,5 @@
 package cl.movistar.hibernate.dto;
-// Generated 20-06-2014 11:47:45 AM by Hibernate Tools 3.6.0
+// Generated 02-07-2014 06:50:33 PM by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -30,6 +30,7 @@ public class MovimientosTracking  implements java.io.Serializable {
      private Integer puntosUtilizados;
      private Integer idTracking;
      private Integer idEventoTracking;
+     private String usuario;
 
     public MovimientosTracking() {
     }
@@ -38,7 +39,7 @@ public class MovimientosTracking  implements java.io.Serializable {
     public MovimientosTracking(int id) {
         this.id = id;
     }
-    public MovimientosTracking(int id, Integer numeroCelular, Integer numeroAbonado, Integer codigoCliente, Integer cicloFacturacion, String codigoOferta, String nombreOferta, Date fechaContratacion, Date fechaActivacion, Date fechaNotificacion, Integer canal, Integer subCanal, Integer estado, String agencia, String codigoVendedor, Integer precio, Integer descuento, Integer puntosUtilizados, Integer idTracking, Integer idEventoTracking) {
+    public MovimientosTracking(int id, Integer numeroCelular, Integer numeroAbonado, Integer codigoCliente, Integer cicloFacturacion, String codigoOferta, String nombreOferta, Date fechaContratacion, Date fechaActivacion, Date fechaNotificacion, Integer canal, Integer subCanal, Integer estado, String agencia, String codigoVendedor, Integer precio, Integer descuento, Integer puntosUtilizados, Integer idTracking, Integer idEventoTracking, String usuario) {
        this.id = id;
        this.numeroCelular = numeroCelular;
        this.numeroAbonado = numeroAbonado;
@@ -59,6 +60,7 @@ public class MovimientosTracking  implements java.io.Serializable {
        this.puntosUtilizados = puntosUtilizados;
        this.idTracking = idTracking;
        this.idEventoTracking = idEventoTracking;
+       this.usuario = usuario;
     }
    
     public int getId() {
@@ -200,6 +202,13 @@ public class MovimientosTracking  implements java.io.Serializable {
     
     public void setIdEventoTracking(Integer idEventoTracking) {
         this.idEventoTracking = idEventoTracking;
+    }
+    public String getUsuario() {
+        return this.usuario;
+    }
+    
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
 

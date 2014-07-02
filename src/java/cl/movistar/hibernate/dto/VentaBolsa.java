@@ -1,5 +1,5 @@
 package cl.movistar.hibernate.dto;
-// Generated 20-06-2014 11:47:45 AM by Hibernate Tools 3.6.0
+// Generated 02-07-2014 06:50:33 PM by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -29,6 +29,7 @@ public class VentaBolsa  implements java.io.Serializable {
      private int descuento;
      private int puntosUtilizados;
      private int idTracking;
+     private String usuario;
 
     public VentaBolsa() {
     }
@@ -51,7 +52,7 @@ public class VentaBolsa  implements java.io.Serializable {
         this.puntosUtilizados = puntosUtilizados;
         this.idTracking = idTracking;
     }
-    public VentaBolsa(int id, int numeroCelular, int numeroAbonado, int codigoCliente, int cicloFacturacion, String codigoOferta, String nombreOferta, Date fechaContratacion, Date fechaActivacion, Date fechaNotificacion, int canal, Integer subCanal, int estado, String agencia, String codigoVendedor, int precio, int descuento, int puntosUtilizados, int idTracking) {
+    public VentaBolsa(int id, int numeroCelular, int numeroAbonado, int codigoCliente, int cicloFacturacion, String codigoOferta, String nombreOferta, Date fechaContratacion, Date fechaActivacion, Date fechaNotificacion, int canal, Integer subCanal, int estado, String agencia, String codigoVendedor, int precio, int descuento, int puntosUtilizados, int idTracking, String usuario) {
        this.id = id;
        this.numeroCelular = numeroCelular;
        this.numeroAbonado = numeroAbonado;
@@ -71,6 +72,7 @@ public class VentaBolsa  implements java.io.Serializable {
        this.descuento = descuento;
        this.puntosUtilizados = puntosUtilizados;
        this.idTracking = idTracking;
+       this.usuario = usuario;
     }
    
     public int getId() {
@@ -205,6 +207,13 @@ public class VentaBolsa  implements java.io.Serializable {
     
     public void setIdTracking(int idTracking) {
         this.idTracking = idTracking;
+    }
+    public String getUsuario() {
+        return this.usuario;
+    }
+    
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
 

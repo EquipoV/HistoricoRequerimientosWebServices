@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -54,25 +55,25 @@ public class HistoricoRequerimientosGateway {
 
         return historicoResponse;
     }
-    
+
     public HistoricoResponse validaIngresoParametrosCliente(ClienteRequest cliente) {
         HistoricoResponse historicoResponse = new HistoricoResponse();
-        if (cliente.getNumeroAbonado() == 0 && cliente.getNumeroCelular()== 0) {
+        if (cliente.getNumeroAbonado() == 0 && cliente.getNumeroCelular() == 0) {
             historicoResponse.setCodigoError(100);
             historicoResponse.setDescripcionError("No hay criterios de busqueda");
             historicoResponse.setMensajeError("Para buscar minimo debe ir un criterio");
         }
 
-        return historicoResponse;      
-    }    
+        return historicoResponse;
+    }
 
     public HistoricoResponse procesarBusquedaCriterioCompleta(CriterioRequest criterio) {
-        
+
         session = HistoricoRequerimientosHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
         HistoricoResponse respuesta = new HistoricoResponse();
-        
+
         List<MovimientosTracking> movimientos = new ArrayList<MovimientosTracking>();
 
         //String where = obtenerQuery(criterio);
@@ -84,7 +85,7 @@ public class HistoricoRequerimientosGateway {
             respuesta.setDescripcionError(helperQuery.getDescripcion());
             respuesta.setMensajeError(helperQuery.getMensaje());
             return respuesta;
-            
+
         } else {
             logger.info("Ingresamos al método obtienerHistoricos");
 
@@ -108,20 +109,19 @@ public class HistoricoRequerimientosGateway {
             }
 
             respuesta = procesarRespuesta(movimientos);
-            
+
         }
 
         session.close();
         return respuesta;
     }
-    
-    
+
     public HistoricoResponse procesarBusquedaClienteCompleta(ClienteRequest cliente) {
         session = HistoricoRequerimientosHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
         HistoricoResponse respuesta = new HistoricoResponse();
-        
+
         List<MovimientosTracking> movimientos = new ArrayList<MovimientosTracking>();
 
         HelperQuery helperQuery = new HelperQuery();
@@ -132,7 +132,7 @@ public class HistoricoRequerimientosGateway {
             respuesta.setDescripcionError(helperQuery.getDescripcion());
             respuesta.setMensajeError(helperQuery.getMensaje());
             return respuesta;
-            
+
         } else {
             logger.info("Ingresamos al método procesarBusquedaClienteCompleta");
 
@@ -155,13 +155,12 @@ public class HistoricoRequerimientosGateway {
                 return respuesta;
             }
 
-            respuesta = procesarRespuesta(movimientos);            
+            respuesta = procesarRespuesta(movimientos);
         }
 
         session.close();
-        return respuesta;     
-    }    
-    
+        return respuesta;
+    }
 
     private HistoricoResponse procesarRespuesta(List<MovimientosTracking> movimientos) {
         HistoricoResponse response = new HistoricoResponse();
@@ -186,7 +185,7 @@ public class HistoricoRequerimientosGateway {
                     nombreCanal = c.getNombre();
                     responseDataAux.setCanalContratacion(verificarNullString(nombreCanal));
                 } catch (Exception e) {
-                    logger.error("No existe el codigo en la tabla canal");                   
+                    logger.error("No existe el codigo en la tabla canal");
                 }
 
                 responseDataAux.setCicloFacturacion(verificarNullInteger(m.getCicloFacturacion()));
@@ -201,7 +200,7 @@ public class HistoricoRequerimientosGateway {
                     nombreEstado = es.getNombre();
                     responseDataAux.setEstado(verificarNullString(nombreEstado));
                 } catch (Exception e) {
-                    logger.error("No existe el codigo en la tabla estado");             
+                    logger.error("No existe el codigo en la tabla estado");
                 }
 
                 if (m.getFechaActivacion() != null) {
@@ -281,7 +280,6 @@ public class HistoricoRequerimientosGateway {
         return response;
     }
 
- 
     private Estado obtieneNombreEstado(int codigoEstado) {
 
         logger.info("Ingresamos al método obtieneNombreEstado");
@@ -341,25 +339,24 @@ public class HistoricoRequerimientosGateway {
                 Query query = session.createQuery("FROM cl.movistar.hibernate.dto.Canal where nombre = '" + canal + "' ");
                 List<Canal> canalAux = query.list();
                 canalBd = canalAux.get(0);
-                if(canalAux.size() <1){
+                if (canalAux.size() < 1) {
                     helperQuery.setCodigo(1);
                     helperQuery.setMensaje("Error al obtener canal");
                     helperQuery.setDescripcion("No se encontro el canal");
                     logger.info("No existe el canal");
-                
+
                     return helperQuery;
-                }else{
+                } else {
                     queryParteWhere = queryParteWhere + "canal = '" + canalBd.getId() + "' ";
                     canalExiste = true;
                 }
-                
-                
+
             } catch (Exception e) {
                 helperQuery.setCodigo(1);
                 helperQuery.setMensaje("Error al obtener canal");
                 helperQuery.setDescripcion("No se encontro el canal");
                 logger.error("No existe el canal, error: " + e);
-                
+
                 return helperQuery;
             }
 
@@ -379,15 +376,15 @@ public class HistoricoRequerimientosGateway {
                 Estado estadoBd = new Estado();
                 Query query = session.createQuery("FROM cl.movistar.hibernate.dto.Estado where nombre = '" + estado + "' ");
                 List<Estado> estadoAux = query.list();
-                if(estadoAux.size()<1){
+                if (estadoAux.size() < 1) {
                     helperQuery.setCodigo(1);
                     helperQuery.setMensaje("Error al obtener estado");
                     helperQuery.setDescripcion("No se encontro el estado");
                     logger.info("No existe el estado");
-                }else{
+                } else {
                     estadoBd = estadoAux.get(0);
                 }
-                
+
                 if (canalExiste || codigoVendedorExiste) {
                     queryParteWhere = queryParteWhere + " AND estado = '" + estadoBd.getId() + "' ";
                 } else {
@@ -400,44 +397,35 @@ public class HistoricoRequerimientosGateway {
                 helperQuery.setDescripcion("No se encontro el estado");
                 logger.error("No existe el estado");
                 return helperQuery;
-                
+
             }
         }
 
         if (fechaDesde != null && fechaHasta != null) {
 
-            Date fDesde = fechaDesde.toGregorianCalendar().getTime();
-            Date fHasta = fechaHasta.toGregorianCalendar().getTime();
-
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 
-            String desde = formato.format(fDesde).toString();
-            String hasta = formato.format(fHasta).toString();
+            Date fDesde = fechaDesde.toGregorianCalendar().getTime();
 
-            if (desde != null && !desde.isEmpty()) {
-                if (canalExiste || codigoVendedorExiste || estadoExiste) {
-                    queryParteWhere = queryParteWhere + " AND fecha_contratacion >= '" + desde + "'";
-                } else {
-                    queryParteWhere = queryParteWhere + " fecha_contratacion >= '" + desde + "'";
-                }
-                fechaDesdeExiste = true;
-            }
+            Calendar c = new GregorianCalendar(fechaHasta.getYear(), fechaHasta.getMonth() - 1, fechaHasta.getDay());
+            c.add(Calendar.DAY_OF_MONTH, 1);
+            Date fHasta = c.getTime();
 
-            if (hasta != null && !hasta.isEmpty()) {
-                if (canalExiste || codigoVendedorExiste || estadoExiste || fechaDesdeExiste) {
-                    queryParteWhere = queryParteWhere + " AND fecha_contratacion <= '" + hasta + "'";
-                } else {
-                    queryParteWhere = queryParteWhere + " fecha_contratacion <= '" + hasta + "'";
-                }
+            String desde = formato.format(fDesde);
+            String hasta = formato.format(fHasta);
+
+            if (canalExiste || codigoVendedorExiste || estadoExiste) {
+                queryParteWhere = queryParteWhere + " AND fecha_contratacion >= '" + desde + "' AND fecha_contratacion <= '" + hasta + "'";
+            } else {
+                queryParteWhere = queryParteWhere + " fecha_contratacion >= '" + desde + "' AND fecha_contratacion <= '" + hasta + "'";
             }
         }
-        
+
         helperQuery.setWhere(queryParteWhere);
         return helperQuery;
     }
-    
-    
-        private HelperQuery obtenerQueryCliente(ClienteRequest cliente) {
+
+    private HelperQuery obtenerQueryCliente(ClienteRequest cliente) {
 
         HelperQuery helperQuery = new HelperQuery();
 
@@ -460,7 +448,7 @@ public class HistoricoRequerimientosGateway {
                 queryParteWhere = queryParteWhere + " numero_celular = '" + numeroCelular + "' ";
             }
         }
-      
+
         helperQuery.setWhere(queryParteWhere);
         return helperQuery;
     }
@@ -478,5 +466,5 @@ public class HistoricoRequerimientosGateway {
         }
         return dato;
     }
-  
+
 }
