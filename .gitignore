@@ -8,11 +8,12 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
-nbproject/
+nbproject/*
 build.xml
 context.xml
 catalog.xml
-
+*.wsdl
+NewWebServiceFromWSDl.java
 
 ### Maven ###
 target/
