@@ -8,10 +8,13 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
-nbproject/
+nbproject/*
 build.xml
-web/META-INF/context.xml
-
+context.xml
+catalog.xml
+*.wsdl
+NewWebServiceFromWSDl.java
+web/WEB-INF/sun-jaxws.xml
 
 ### Maven ###
 target/
